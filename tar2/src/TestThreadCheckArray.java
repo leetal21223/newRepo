@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class TestThreadCheckArray {
@@ -6,16 +8,16 @@ public class TestThreadCheckArray {
 			Thread thread1, thread2;
 			System.out.println("Enter array size");
 			int num  = input.nextInt();
-			int [] array = new int[num];
+			List <Integer> list=new ArrayList <>();
 			System.out.println("Enter numbers for array");
 			
 			for (int index = 0; index < num; index++) 
-				array[index] = input.nextInt();
+				list.set(index,input.nextInt());
 			
 			System.out.println("Enter number");
 			num = input.nextInt();
 			
-			SharedData sd = new SharedData(array, num);
+			SharedData sd = new SharedData(list, num);
 			
 			thread1 = new Thread(new ThreadCheckArray(sd), "thread1");
 			thread2 = new Thread(new ThreadCheckArray(sd), "thread2");
